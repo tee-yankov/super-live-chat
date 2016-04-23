@@ -8,7 +8,8 @@
     "test": "eslint src && npm run mocha",
     "test:watch": "npm run mocha -- --watch",
     "dev": "webpack-dev-server --config webpack.config.babel.js",
-    "build": "webpack --config webpack.config.babel.js"
+    "build": "webpack --config webpack.config.babel.js",
+    "reset": "git fetch origin && git reset --hard origin/master"
   },
   "repository": {
     "type": "git",
