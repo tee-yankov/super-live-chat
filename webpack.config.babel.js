@@ -29,7 +29,7 @@ export default {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         include: path.join(__dirname, 'src'),
-        loaders: ['react-hot', 'babel']
+        loaders: ['babel']
       },
       {
         test: /\.html$/,
