@@ -1,1 +1,3 @@
-console.log('Test');
+require('angular');
+require('angular-ui-router');
+require('./app');
