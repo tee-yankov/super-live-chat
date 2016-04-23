@@ -2,7 +2,8 @@ import autoprefixer from 'autoprefixer';
 import autoreset from 'postcss-autoreset';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import { ContextReplacementPlugin, HotModuleReplacementPlugin } from 'webpack';
+import { ContextReplacementPlugin, HotModuleReplacementPlugin, DefinePlugin } from 'webpack';
+import environment from './.environment';
 
 const sassLoaders = [
   'css-loader',
@@ -57,7 +58,8 @@ export default {
   plugins: [
     new ExtractTextPlugin('style.css'),
     new ContextReplacementPlugin(/moment[\/\\]locale$/, /en|bg/),
-    new HotModuleReplacementPlugin()
+    new HotModuleReplacementPlugin(),
+    new DefinePlugin(environment)
   ],
   postcss: () => [
     autoprefixer({

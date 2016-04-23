@@ -3,6 +3,8 @@ angular.module('superLiveChat')
   $stateProvider
   .state('home', {
     url: '/home',
-    template: '<h1>Hi!</h1>'
+    template: require('./home.html')
   })
 });
+
+require('./home.controller.js');
