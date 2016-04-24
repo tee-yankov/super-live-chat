@@ -1,6 +1,7 @@
 angular.module('superLiveChat', [
-  'ui.router'
+  'ui.router',
+  'firebase'
 ])
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($urlRouterProvider) {
   $urlRouterProvider.otherwise('/home');
 });

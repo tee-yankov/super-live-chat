@@ -21,6 +21,7 @@
   "dependencies": {
     "angular": "^1.5.5",
     "angular-ui-router": "^0.2.18",
+    "angularfire": "^1.2.0",
     "autoprefixer": "6.3.3",
     "babel": "6.5.2",
     "babel-core": "^6.5.2",
