@@ -4,11 +4,18 @@ angular.module('superLiveChat')
 .controller('homeController', function($scope) {
   const myFirebaseRef = new Firebase(FIREBASE_URL);
   $scope.messages = [];
-  myFirebaseRef.set({
-    message: 'Hello World'
-  });
-  myFirebaseRef.on('value', function(snapshot) {
+  $scope.submit = function() {
+    console.log($scope.message);
+    myFirebaseRef.push({
+      message: $scope.message
+    });
+  }
+  myFirebaseRef.on('child_added', function(snapshot) {
     console.log(snapshot.val());
-    $scope.messages.push(snapshot.val());
+    if (!$scope.$$phase) {
+      $scope.$apply(function() {
+        $scope.messages.push(snapshot.val());
+      });
+    }
   });
 });
