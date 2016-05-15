@@ -1,8 +1,11 @@
 import Firebase from 'firebase';
 
 angular.module('superLiveChat')
-.controller('homeController', function($scope, $firebaseObject, $firebaseArray) {
+.controller('homeController', function($scope, $firebaseObject, $firebaseArray, $state, User) {
   const myFirebaseRef = new Firebase(FIREBASE_URL);
+  if (!User.getUser()) {
+    $state.go('login');
+  }
   $scope.messages = $firebaseArray(myFirebaseRef);
   $scope.message = '';
   $scope.submit = function() {
@@ -11,7 +14,9 @@ angular.module('superLiveChat')
     }
     $scope.messages.$add({
       message: $scope.message,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      author: User.getUser().password.email,
+      image: User.getUser().password.profileImageURL
     });
     $scope.message = '';
   }

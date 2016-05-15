@@ -5,3 +5,4 @@ require('angularfire');
 require('./app');
 require('./home');
 require('./login');
+require('./user');
