@@ -1,11 +1,16 @@
 <div class="container" ng-controller="homeController">
-  <form ng-submit="submit()">
-    <input type="text" ng-model="message">
-    <input type="button" value="Submit" />
+  <form class="row" ng-submit="submit()">
+    <div class="form-group">
+      <input class="col-sm-10 form-control" type="text" ng-model="message">
+      <input class="col-sm-2 btn btn-default" type="submit" value="Submit" />
+    </div>
   </form>
-  <div ng-repeat="message in messages track by $index">
-    <p>
-      {{ message.message }}
-    </p>
+  <div class="container-fluid">
+    <div class="row" ng-repeat="message in messages | orderBy : 'timestamp' : true track by $index">
+      <p class="col-sm-10">
+        {{ message.message }}
+      </p>
+      <span class="col-sm-2">{{ message.timestamp | date: "HH:mm:ss - dd-MMMM-yyyy" }}</span>
+    </div>
   </div>
 </div>
